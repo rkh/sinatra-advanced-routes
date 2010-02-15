@@ -5,35 +5,6 @@ require "monkey"
 module Sinatra
   Base.ignore_caller
 
-  # AdvancedRoutes makes routes first class objects in Sinatra:
-  #
-  #   require "sinatra"
-  #   require "sinatra/advanced_routes"
-  #
-  #   admin_route = get "/admin" do
-  #     administrate_stuff
-  #   end
-  #
-  #   before do
-  #     # Let's deactivate the route if we have no password file.
-  #     if File.exists? "admin_password"
-  #       admin_route.activate
-  #     else
-  #       admin_route.deactivate 
-  #     end
-  #   end
-  #
-  #   first_route = get "/:name" do
-  #     # stuff
-  #   end
-  #
-  #   other_route = get "/foo_:name" do
-  #     # other stuff
-  #   end
-  #
-  #   # Unfortunatly first_route will catch all the requests other_route would
-  #   # have gotten, since it has been defined first. But wait, we can fix this!
-  #   other_route.promote
   module AdvancedRoutes
 
     module ArrayMethods
