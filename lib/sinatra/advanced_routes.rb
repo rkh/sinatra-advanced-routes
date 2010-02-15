@@ -1,8 +1,9 @@
 require "sinatra/base"
-require "sinatra/base"
+require "sinatra/sugar"
 require "monkey"
 
 module Sinatra
+  Base.ignore_caller
 
   # AdvancedRoutes makes routes first class objects in Sinatra:
   #
