@@ -37,17 +37,15 @@ describe Sinatra::AdvancedRoutes do
       end
 
       describe "inspection" do
-        it "exposes app, path, file, verb, pattern, " do
-          route = define_route(verb, "/foo") { }
-          route.app.should        == app
-          route.path.should       == "/foo"
-          #route.file.should       == __FILE__.expand_path
-          route.verb.should       == verb.to_s.upcase
-          route.pattern.should    == route[0]
-          route.keys.should       == route[1]
-          route.conditions.should == route[2]
-          route.block.should      == route[3]
-        end
+        before { @route = define_route(verb, "/foo") { } }
+        it("exposes app")        { @route.app.should        == app                  }
+        it("exposes path")       { @route.path.should       == "/foo"               }
+        it("exposes file")       { @route.file.should       == __FILE__.expand_path }
+        it("exposes verb")       { @route.verb.should       == verb.to_s.upcase     }
+        it("exposes pattern")    { @route.pattern.should    == @route[0]            }
+        it("exposes keys")       { @route.keys.should       == @route[1]            }
+        it("exposes conditions") { @route.conditions.should == @route[2]            }
+        it("exposes block")      { @route.block.should      == @route[3]            }
       end
 
       describe "promotion" do
