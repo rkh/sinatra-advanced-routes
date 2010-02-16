@@ -2,9 +2,7 @@ require File.expand_path("../../spec_helper", __FILE__)
 
 describe Sinatra::AdvancedRoutes do
   before { app :AdvancedRoutes }
-
   [:get, :head, :post, :put, :delete].each do |verb|
-
     describe "HTTP #{verb.to_s.upcase}" do
 
       describe "activation" do
@@ -90,7 +88,5 @@ describe Sinatra::AdvancedRoutes do
       end
 
     end
-
   end
-
 end
