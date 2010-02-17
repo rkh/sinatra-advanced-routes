@@ -66,7 +66,7 @@ describe Sinatra::AdvancedRoutes do
         end
 
         it "triggers advanced_root_added hook" do
-          meth = @extension.should_receive(:advanced_root_added)
+          meth = @extension.should_receive(:advanced_route_added)
           verb == :get ? meth.twice : meth.once
           define_route(verb, "/foo") { }
         end
@@ -74,14 +74,14 @@ describe Sinatra::AdvancedRoutes do
         it "triggers advanced_root_activated hook" do
           route = define_route(verb, "/foo") { }
           route.deactivate
-          meth = @extension.should_receive(:advanced_root_activated)
+          meth = @extension.should_receive(:advanced_route_activated)
           verb == :get ? meth.twice : meth.once
           route.activate
         end
 
         it "triggers advanced_root_deactivated hook" do
           route = define_route(verb, "/foo") { }
-          meth = @extension.should_receive(:advanced_root_deactivated)
+          meth = @extension.should_receive(:advanced_route_deactivated)
           verb == :get ? meth.twice : meth.once
           route.deactivate
         end

@@ -62,7 +62,7 @@ module Sinatra
         meth = at_top ? :unshift : :push
         (app.routes[verb] ||= []).send(meth, self)
         invoke_hook :route_added, verb, path, block
-        invoke_hook :advanced_root_activated, self
+        invoke_hook :advanced_route_activated, self
         self
       end
 
@@ -71,7 +71,7 @@ module Sinatra
         return unless active?
         (app.routes[verb] ||= []).delete(signature)
         invoke_hook :route_removed, verb, path, block
-        invoke_hook :advanced_root_deactivated, self
+        invoke_hook :advanced_route_deactivated, self
         self
       end
 
@@ -127,7 +127,7 @@ module Sinatra
         file ||= caller_files.first
         route = super(verb, path, options, &block)
         route.to_route! verb, :app => self, :file => file.expand_path, :line => line, :path => path
-        invoke_hook :advanced_root_added, route
+        invoke_hook :advanced_route_added, route
         @capture_routes << route if @capture_routes
         route
       end
