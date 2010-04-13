@@ -2,16 +2,16 @@ SPEC = Gem::Specification.new do |s|
 
   # Get the facts.
   s.name             = "sinatra-advanced-routes"
-  s.version          = "0.4.0.a"
+  s.version          = "0.4.0"
   s.description      = "Make Sinatra routes first class objects (part of BigBand)."
 
   # BigBand depedencies
-  s.add_dependency "monkey-lib", s.version
-  s.add_dependency "sinatra-sugar", s.version
-  s.add_development_dependency "sinatra-test-helper", s.version
+  s.add_dependency "monkey-lib", "~> 0.4.0.0"
+  s.add_dependency "sinatra-sugar", "~> 0.4.0.0"
+  s.add_development_dependency "sinatra-test-helper", "~> 0.4.0.0"
 
   # External dependencies
-  s.add_dependency "sinatra", ">= 0.9.4"
+  s.add_dependency "sinatra", ">= 0.9.4" # Works fine with 1.0!
   s.add_development_dependency "rspec", ">= 1.3.0"
 
   # Those should be about the same in any BigBand extension.

@@ -12,7 +12,7 @@ Check it out if you are looking for other fancy Sinatra extensions.
 Installation
 ------------
 
-    gem install sinatra-advanced-routes --prerelease
+    gem install sinatra-advanced-routes
 
 Example
 -------
