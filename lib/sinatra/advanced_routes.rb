@@ -53,7 +53,7 @@ module Sinatra
       end
 
       def active?
-        app.routes[verb].include? self
+        app.routes.include? verb and app.routes[verb].include? self
       end
 
       def activate(at_top = false)
