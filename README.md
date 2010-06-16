@@ -34,7 +34,7 @@ Route manipulation:
     end
 
     first_route = get "/:name" do
-     # stuff
+      # stuff
     end
 
     other_route = get "/foo_:name" do
@@ -56,20 +56,20 @@ Route inspection:
       puts route.verb       # get / head / post / put / delete
       puts route.file       # "some_sinatra_app.rb" or something
       puts route.line       # the line number of the get/post/... statement
-      puts route.pattern    # that's the pattern internally used by
+      puts route.pattern    # that's the pattern internally used by sinatra
       puts route.keys       # keys given when route was defined
       puts route.conditions # conditions given when route was defined
       puts route.block      # the route's closure
     end
 
-Some of that fields (like conditions or pattern) can be changed (will take effect on the routing).
+Some of that fields (like conditions or pattern) can be changed, which will take immediate effect on the routing.
 
 Usage with Sinatra::Base
 ------------------------
 
     require "sinatra/base"
     require "sinatra/advanced_routes"
-  
+    
     class Foo < Sinatra::Base
       register Sinatra::AdvancedRoutes
     end
