@@ -2,13 +2,13 @@ SPEC = Gem::Specification.new do |s|
 
   # Get the facts.
   s.name             = "sinatra-advanced-routes"
-  s.version          = "0.4.1"
+  s.version          = "0.5.0"
   s.description      = "Make Sinatra routes first class objects (part of BigBand)."
 
   # BigBand depedencies
-  s.add_dependency "monkey-lib", "~> 0.4.0"
-  s.add_dependency "sinatra-sugar", "~> 0.4.0"
-  s.add_development_dependency "sinatra-test-helper", "~> 0.4.0"
+  s.add_dependency "monkey-lib", "~> 0.5.0"
+  s.add_dependency "sinatra-sugar", "~> 0.5.0"
+  s.add_development_dependency "sinatra-test-helper", "~> 0.5.0"
 
   # External dependencies
   s.add_dependency "sinatra", "~> 1.0"
