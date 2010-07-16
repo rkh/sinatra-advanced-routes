@@ -125,8 +125,9 @@ module Sinatra
       def route(verb, path, options={}, &block)
         file, line = block.source_location if block.respond_to? :source_location
         file ||= caller_files.first
+        file &&= file.expand_path
         route = super(verb, path, options, &block)
-        route.to_route! verb, :app => self, :file => file.expand_path, :line => line, :path => path
+        route.to_route! verb, :app => self, :file => file, :line => line, :path => path
         invoke_hook :advanced_route_added, route
         @capture_routes << route if @capture_routes
         route
