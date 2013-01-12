@@ -91,4 +91,13 @@ describe Sinatra::AdvancedRoutes do
 
     end
   end
+
+  def define_route(verb, *args, &block)
+    app.send(verb, *args, &block)
+  end
+
+  def browse_route(verb, *args, &block)
+    send(verb, *args, &block)
+    last_response
+  end
 end
