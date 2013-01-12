@@ -12,6 +12,17 @@ Add to your `Gemfile` :
 gem 'sinatra-advanced-routes'
 ```
 
+If you are extending Sinatra::Base, register the extension manually :
+
+```ruby
+require "sinatra/base"
+require "sinatra/advanced_routes"
+
+class Foo < Sinatra::Base
+  register Sinatra::AdvancedRoutes
+end
+```
+
 ## Examples
 
 ### Route manipulation
@@ -64,14 +75,3 @@ end
 ```
 
 Some of that fields (like conditions or pattern) can be changed, which will take immediate effect on the routing.
-
-## Usage with Sinatra::Base
-
-```ruby
-require "sinatra/base"
-require "sinatra/advanced_routes"
-
-class Foo < Sinatra::Base
-  register Sinatra::AdvancedRoutes
-end
-```
