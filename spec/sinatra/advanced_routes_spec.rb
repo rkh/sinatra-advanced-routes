@@ -1,8 +1,14 @@
 require File.expand_path("../../spec_helper", __FILE__)
 
+set :environment, :test
+
 describe Sinatra::AdvancedRoutes do
-  before { app :AdvancedRoutes }
-  it_should_behave_like 'sinatra'
+
+  def app
+    Sinatra::Application
+  end
+
+  before { mock_app { register Sinatra::AdvancedRoutes }}
 
   [:get, :head, :post, :put, :delete].each do |verb|
     describe "HTTP #{verb.to_s.upcase}" do
