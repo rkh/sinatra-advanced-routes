@@ -10,7 +10,7 @@ describe Sinatra::AdvancedRoutes do
 
   before { mock_app { register Sinatra::AdvancedRoutes }}
 
-  [:get, :head, :post, :put, :delete].each do |verb|
+  [:head, :get, :post, :put, :delete].each do |verb|
     describe "HTTP #{verb.to_s.upcase}" do
 
       describe "activation" do
@@ -24,7 +24,7 @@ describe Sinatra::AdvancedRoutes do
           browse_route(verb, "/foo").should_not be_ok
         end
 
-        it "is able to deacitvate routes from a before filter" do
+        it "is able to deactivate routes from a before filter" do
           route = define_route(verb, "/foo") { "bar" }
           app.before { route.deactivate }
           route.should be_active
