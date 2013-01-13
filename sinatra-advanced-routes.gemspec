@@ -8,7 +8,9 @@ SPEC = Gem::Specification.new do |s|
   # BigBand depedencies
   s.add_dependency "monkey-lib", "~> 0.5.0"
   s.add_dependency "sinatra-sugar", "~> 0.5.0"
-  s.add_development_dependency "sinatra-test-helper", "~> 0.5.0"
+  s.add_development_dependency 'rack-test'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'sinatra-contrib'
 
   # External dependencies
   s.add_dependency "sinatra", "~> 1.0"

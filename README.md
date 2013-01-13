@@ -2,6 +2,8 @@
 
 > Makes routes first class objects in [Sinatra](http://sinatrarb.com).
 
+[![Build Status](https://travis-ci.org/rkh/sinatra-advanced-routes.png)](https://travis-ci.org/rkh/sinatra-advanced-routes)
+
 Check out [sinatra-contrib](https://github.com/sinatra/sinatra-contrib) you are looking for other fancy Sinatra extensions.
 
 ## Installation
