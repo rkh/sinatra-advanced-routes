@@ -1,0 +1,1 @@
+require 'sinatra/advanced_routes'
