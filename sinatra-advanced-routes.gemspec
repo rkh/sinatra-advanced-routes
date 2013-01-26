@@ -2,7 +2,7 @@ SPEC = Gem::Specification.new do |s|
 
   # Get the facts.
   s.name             = "sinatra-advanced-routes"
-  s.version          = "0.5.1"
+  s.version          = "0.5.2"
   s.description      = "Make Sinatra routes first class objects (part of BigBand)."
 
   # BigBand depedencies
