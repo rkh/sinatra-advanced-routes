@@ -1,6 +1,5 @@
 require "sinatra/base"
 require "sinatra/sugar"
-require "monkey-lib"
 
 module Sinatra
   Base.ignore_caller

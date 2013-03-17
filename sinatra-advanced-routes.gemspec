@@ -6,7 +6,7 @@ SPEC = Gem::Specification.new do |s|
   s.description      = "Make Sinatra routes first class objects (part of BigBand)."
 
   # BigBand depedencies
-  s.add_dependency "monkey-lib", "~> 0.5.0"
+  # s.add_dependency "monkey-lib", "~> 0.5.0"
   s.add_dependency "sinatra-sugar", "~> 0.5.0"
   s.add_development_dependency 'rack-test'
   s.add_development_dependency 'rake'
