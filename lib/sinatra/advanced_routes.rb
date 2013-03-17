@@ -121,7 +121,11 @@ module Sinatra
 
       def route(verb, path, options={}, &block)
         file, line = block.source_location if block.respond_to? :source_location
-        file ||= caller_files.first
+        if file.nil?
+          files = caller_files
+          files.delete(__FILE__)
+          file = files.first
+        end
         file &&= File.expand_path(file)
         route = super(verb, path, options, &block)
         route.to_route! verb, :app => self, :file => file, :line => line, :path => path
