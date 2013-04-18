@@ -1,9 +1,6 @@
 require "sinatra/base"
-require "sinatra/sugar"
-require "monkey-lib"
 
 module Sinatra
-  Base.ignore_caller
 
   module AdvancedRoutes
 
@@ -124,8 +121,12 @@ module Sinatra
 
       def route(verb, path, options={}, &block)
         file, line = block.source_location if block.respond_to? :source_location
-        file ||= caller_files.first
-        file &&= file.expand_path
+        if file.nil?
+          files = caller_files
+          files.delete(__FILE__)
+          file = files.first
+        end
+        file &&= File.expand_path(file)
         route = super(verb, path, options, &block)
         route.to_route! verb, :app => self, :file => file, :line => line, :path => path
         invoke_hook :advanced_route_added, route
