@@ -46,7 +46,7 @@ describe Sinatra::AdvancedRoutes do
         before { @route = define_route(verb, "/foo") { } }
         it("exposes app")        { @route.app.should        == app                  }
         it("exposes path")       { @route.path.should       == "/foo"               }
-        it("exposes file")       { @route.file.should       == __FILE__.expand_path }
+        it("exposes file")       { @route.file.should       == File.expand_path(__FILE__) }
         it("exposes verb")       { @route.verb.should       == verb.to_s.upcase     }
         it("exposes pattern")    { @route.pattern.should    == @route[0]            }
         it("exposes keys")       { @route.keys.should       == @route[1]            }
