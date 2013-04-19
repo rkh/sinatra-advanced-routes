@@ -1,6 +1,6 @@
 SPEC = Gem::Specification.new do |s|
   s.name             = "sinatra-advanced-routes"
-  s.version          = "0.5.2"
+  s.version          = "0.5.3"
   s.description      = "Make Sinatra routes first class objects."
 
   s.add_dependency "sinatra", "~> 1.0"
@@ -10,7 +10,7 @@ SPEC = Gem::Specification.new do |s|
   s.add_development_dependency 'sinatra-contrib'
 
   # Those should be about the same in any BigBand extension.
-  s.authors          = ["Konstantin Haase"]
+  s.authors          = ["Konstantin Haase", "Jean-Philippe Doyle"]
   s.email            = "konstantin.mailinglists@googlemail.com"
   s.files            = Dir["**/*.{rb,md}"] << "LICENSE"
   s.has_rdoc         = 'yard'

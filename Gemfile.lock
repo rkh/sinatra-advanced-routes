@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-advanced-routes (0.5.2)
+    sinatra-advanced-routes (0.5.3)
       sinatra (~> 1.0)
 
 GEM
