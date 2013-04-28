@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/rkh/sinatra-advanced-routes.png)](https://travis-ci.org/rkh/sinatra-advanced-routes)
 [![Gem Version](https://badge.fury.io/rb/sinatra-advanced-routes.png)](https://rubygems.org/gems/sinatra-advanced-routes)
+[![Code Climate](https://codeclimate.com/github/rkh/sinatra-advanced-routes.png)](https://codeclimate.com/github/rkh/sinatra-advanced-routes)
 
 Check out [sinatra-contrib](https://github.com/sinatra/sinatra-contrib) you are looking for other fancy Sinatra extensions.
 
