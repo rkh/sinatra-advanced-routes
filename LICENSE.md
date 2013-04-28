@@ -1,4 +1,6 @@
-copyright (c) 2010 Konstantin Haase.  All rights reserved.
+# License
+
+Copyright (c) 2010-2013 Konstantin Haase.  All rights reserved.
 
 Developed by: Konstantin Haase
               http://github.com/rkh/big_band
