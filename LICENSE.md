@@ -3,7 +3,7 @@
 Copyright (c) 2010-2013 Konstantin Haase.  All rights reserved.
 
 Developed by: Konstantin Haase
-              http://github.com/rkh/big_band
+              https://github.com/rkh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
