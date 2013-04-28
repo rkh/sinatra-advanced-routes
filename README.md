@@ -1,4 +1,4 @@
-# Sinatra::AdvancedRoutes
+# sinatra-advanced-routes
 
 > Makes routes first class objects in [Sinatra](http://sinatrarb.com).
 
@@ -10,17 +10,17 @@ Check out [sinatra-contrib](https://github.com/sinatra/sinatra-contrib) you are 
 
 ## Installation
 
-Add to your `Gemfile` :
-
 ```ruby
-gem 'sinatra-advanced-routes'
+# Gemfile
+gem 'sinatra-advanced-routes', :require => 'sinatra/advanced_routes'
 ```
 
-If you are extending Sinatra::Base, register the extension manually :
+If you are serving a [modular application](https://github.com/sinatra/sinatra#modular-vs-classic-style), 
+register the extension manually :
 
 ```ruby
-require "sinatra/base"
-require "sinatra/advanced_routes"
+require 'sinatra/base'
+require 'sinatra/advanced_routes'
 
 class Foo < Sinatra::Base
   register Sinatra::AdvancedRoutes
@@ -32,25 +32,25 @@ end
 ### Route manipulation
 
 ```ruby
-require "sinatra"
-require "sinatra/advanced_routes"
+require 'sinatra'
+require 'sinatra/advanced_routes'
 
-admin_route = get "/admin" do
+admin_route = get '/admin' do
   administrate_stuff
 end
 
 before do
   # Let's deactivate the route if we have no password file.
-  if File.exists? "admin_password" then admin_route.activate
+  if File.exists? 'admin_password' then admin_route.activate
   else admin_route.deactivate 
   end
 end
 
-first_route = get "/:name" do
+first_route = get '/:name' do
   # stuff
 end
 
-other_route = get "/foo_:name" do
+other_route = get '/foo_:name' do
   # other stuff
 end
 
@@ -62,10 +62,10 @@ other_route.promote
 ### Route inspection
 
 ```ruby
-require "some_sinatra_app"
+require 'some_sinatra_app'
 
 SomeSinatraApp.each_route do |route|
-  puts "-" * 20
+  puts '-' * 20
   puts route.app.name   # "SomeSinatraApp"
   puts route.path       # that's the path given as argument to get and akin
   puts route.verb       # get / head / post / put / delete
