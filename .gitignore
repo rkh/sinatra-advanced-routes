@@ -12,3 +12,5 @@ config/
 scratch/
 .yardoc/
 Gemfile.lock
+.rspec
+.pryrc
