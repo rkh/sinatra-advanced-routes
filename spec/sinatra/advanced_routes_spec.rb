@@ -75,10 +75,9 @@ describe Sinatra::AdvancedRoutes do
         it("exposes path")       { @route.path.should       == "/foo"               }
         it("exposes file")       { @route.file.should       == File.expand_path(__FILE__) }
         it("exposes verb")       { @route.verb.should       == verb.to_s.upcase     }
-        it("exposes pattern")    { @route.pattern.should    == @route[0]            }
-        it("exposes keys")       { @route.keys.should       == @route[1]            }
-        it("exposes conditions") { @route.conditions.should == @route[2]            }
-        it("exposes block")      { @route.block.should      == @route[3]            }
+        it("exposes pattern")    { @route.pattern.should    == @route[0]}
+        it("exposes conditions") { @route.conditions.should == @route[1]}
+        it("exposes block")      { @route.block.should      == @route[2]}
       end
 
       describe "promotion" do
