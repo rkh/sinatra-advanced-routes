@@ -8,6 +8,13 @@ describe Sinatra::AdvancedRoutes do
     Sinatra::Application
   end
 
+
+	shared_context "clear up" do
+		after :all do
+			app.instance_variable_set :@routes, {}
+		end
+	end
+
   before { mock_app { register Sinatra::AdvancedRoutes }}
 
   [:head, :get, :post, :put, :delete].each do |verb|
@@ -15,34 +22,54 @@ describe Sinatra::AdvancedRoutes do
 
       describe "activation" do
 
-        it "is able to deactivate routes from the outside" do
-          route = define_route(verb, "/foo") { "bar" }
-          route.should be_active
-          browse_route(verb, "/foo").should be_ok
-          route.deactivate
-          route.should_not be_active
-          browse_route(verb, "/foo").should_not be_ok
-        end
+				context "from the outside" do
+					include_context "clear up"
+					before :all do
+						@route = define_route(verb, "/foo") { "bar" }
+					end
 
-        it "is able to deactivate routes from a before filter" do
-          route = define_route(verb, "/foo") { "bar" }
-          app.before { route.deactivate }
-          route.should be_active
-          browse_route(verb, "/foo").should_not be_ok
-          route.should_not be_active
-        end
+					it "should be able to activate a route" do
+						@route.should be_active
+						browse_route(verb, "/foo").should be_ok
+					end
+					context "deactivated" do
+					 it "is able to deactivate route" do
+						 @route.deactivate
+						 @route.should_not be_active
+					 end
+					 it "should not be browsable" do
+						 browse_route(verb, "/foo").should_not be_ok
+					 end
+					end
+      	end
 
-        it "is able to reactivate deactivated routes" do
-          route = define_route(verb, "/foo") { "bar" }
-          route.deactivate
-          route.activate
-          route.should be_active
-          browse_route(verb, "/foo").should be_ok
-        end
 
+
+				context "before filter" do
+					include_context "clear up"
+					it "is able to deactivate routes from a before filter" do
+						route = define_route(verb, "/foo") { "bar" }
+						app.before { route.deactivate }
+						route.should be_active
+						browse_route(verb, "/foo").should_not be_ok
+						route.should_not be_active
+					end
+				end
+
+				context "deactivated routes" do
+					include_context "clear up"
+					it "is able to reactivate them" do
+						route = define_route(verb, "/foo") { "bar" }
+						route.deactivate
+						route.activate
+						route.should be_active
+						browse_route(verb, "/foo").should be_ok
+					end
+				end
       end
 
       describe "inspection" do
+				include_context "clear up"
         before { @route = define_route(verb, "/foo") { } }
         it("exposes app")        { @route.app.should        == app                  }
         it("exposes path")       { @route.path.should       == "/foo"               }
@@ -55,15 +82,27 @@ describe Sinatra::AdvancedRoutes do
       end
 
       describe "promotion" do
-        it "preffers promoted routes over earlier defined routes" do
-          next if verb == :head # cannot check body for head
-          bar = define_route(verb, "/foo") { "bar" }
-          baz = define_route(verb, "/foo") { "baz" }
-          browse_route(verb, "/foo").body.should == "bar"
-          baz.promote
-          browse_route(verb, "/foo").body.should == "baz"
-          bar.promote
-          browse_route(verb, "/foo").body.should == "bar"
+				next if verb == :head # cannot check body for head
+				before :each do
+          @bar = define_route(verb, "/foo") { "bar" }
+          @baz = define_route(verb, "/foo") { "BAZ" }
+        end
+        context "Before" do
+				  Then { browse_route(verb, "/foo").body.should == "bar" }
+				  include_context "clear up"
+				end
+
+        context "preffers promoted routes over earlier defined routes" do
+        	context "single promotion" do
+						include_context "clear up"
+						When { @baz.promote }
+						Then { browse_route(verb, "/foo").body.should == "BAZ" }
+					end
+					context "Double promotion, full circle" do
+						include_context "clear up"
+						When { @baz.promote; @bar.promote }
+						Then { browse_route(verb, "/foo").body.should == "bar" }
+					end
         end
       end
 
