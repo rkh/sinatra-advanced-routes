@@ -3,11 +3,7 @@ SPEC = Gem::Specification.new do |s|
   s.version          = "0.5.3"
   s.description      = "Make Sinatra routes first class objects."
 
-  s.add_dependency "sinatra", "~> 1.0"
-  s.add_development_dependency "rspec", ">= 1.3.0"
-  s.add_development_dependency 'rack-test'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'sinatra-contrib'
+  s.add_dependency "sinatra", ">= 2.0.0"
 
   # Those should be about the same in any BigBand extension.
   s.authors          = ["Konstantin Haase", "Jean-Philippe Doyle"]

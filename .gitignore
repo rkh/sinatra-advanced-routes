@@ -1,0 +1,16 @@
+.project
+.loadpath
+.DS_Store
+pkg
+doc
+vendor/
+vendor.noindex/
+.bundle/
+bin/
+coverage/
+config/
+scratch/
+.yardoc/
+Gemfile.lock
+.rspec
+.pryrc

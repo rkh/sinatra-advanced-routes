@@ -35,18 +35,16 @@ module Sinatra
       attr_accessor :app, :verb, :file, :line, :path, :docstring
 
       def pattern;    self[0]; end
-      def keys;       self[1]; end
-      def conditions; self[2]; end
-      def block;      self[3]; end
+      def conditions; self[1]; end
+      def block;      self[2]; end
       alias to_proc block
 
       def pattern=(value);    self[0] = value; end
-      def keys=(value);       self[1] = value; end
-      def conditions=(value); self[2] = value; end
-      def block=(value);      self[3] = value; end
+      def conditions=(value); self[1] = value; end
+      def block=(value);      self[2] = value; end
 
       def signature
-        [pattern, keys, conditions, block]
+        [pattern, conditions, block]
       end
 
       def active?
